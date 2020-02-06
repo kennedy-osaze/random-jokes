@@ -1,0 +1,26 @@
+{
+    "name": "kennedyosaze/random-jokes",
+    "description": "Create some random jokes",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kennedy Osaze",
+            "email": "me.osaze@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "KennedyOsaze\\RandomJokes\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "KennedyOsaze\\RandomJokes\\Tests\\": "tests/"
+        }
+    }
+}
