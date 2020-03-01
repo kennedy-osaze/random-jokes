@@ -3,7 +3,6 @@
 namespace KennedyOsaze\RandomJokes;
 
 use Illuminate\Support\ServiceProvider;
-use KennedyOsaze\RandomJokes\JokeFactory;
 use KennedyOsaze\RandomJokes\Console\RandomJoke;
 
 class RandomJokesServiceProvider extends ServiceProvider
