@@ -21,9 +21,13 @@ class RandomJokesServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../resources/views' => resource_path('views/vendor/random-jokes'),
-        ]);
+        ], 'views');
 
-        Route::get('random-jokes', RandomJokeController::class);
+        $this->publishes([
+            __DIR__ . '/../config/random-jokes.php' => config_path('random-jokes.php'),
+        ], 'config');
+
+        Route::get(config('random-jokes.route'), RandomJokeController::class);
     }
 
     public function register()
@@ -31,5 +35,7 @@ class RandomJokesServiceProvider extends ServiceProvider
         $this->app->bind('random-jokes', function () {
             return new JokeFactory();
         });
+
+        $this->mergeConfigFrom(__DIR__ . '/../config/random-jokes.php', 'random-jokes');
     }
 }
