@@ -27,6 +27,12 @@ class RandomJokesServiceProvider extends ServiceProvider
             __DIR__ . '/../config/random-jokes.php' => config_path('random-jokes.php'),
         ], 'config');
 
+        if (! class_exists('CreateJokesTable')) {
+            $this->publishes([
+                __DIR__ . '/../database/migrations/create_jokes_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_jokes_table.php'),
+            ], 'migrations');
+        }
+
         Route::get(config('random-jokes.route'), RandomJokeController::class);
     }
 
