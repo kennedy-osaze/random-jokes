@@ -2,10 +2,10 @@
 
 namespace KennedyOsaze\RandomJokes\Tests;
 
-use Orchestra\Testbench\TestCase;
 use Illuminate\Support\Facades\Artisan;
 use KennedyOsaze\RandomJokes\Facades\RandomJokes;
 use KennedyOsaze\RandomJokes\RandomJokesServiceProvider;
+use Orchestra\Testbench\TestCase;
 
 class LaravelTest extends TestCase
 {
@@ -21,7 +21,7 @@ class LaravelTest extends TestCase
 
         $output = Artisan::output();
 
-        $this->assertSame('some joke' . PHP_EOL, $output);
+        $this->assertSame('some joke'.PHP_EOL, $output);
     }
 
     public function testRouteCanBeAccessed()
