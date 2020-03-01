@@ -18,6 +18,12 @@ class RandomJokesServiceProvider extends ServiceProvider
             ]);
         }
 
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'random-jokes');
+
+        $this->publishes([
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/random-jokes'),
+        ]);
+
         Route::get('random-jokes', RandomJokeController::class);
     }
 

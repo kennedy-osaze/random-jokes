@@ -26,7 +26,13 @@ class LaravelTest extends TestCase
 
     public function testRouteCanBeAccessed()
     {
+        RandomJokes::shouldReceive('getRandomJoke')
+            ->once()
+            ->andReturn('some joke');
+
         $this->get('/random-jokes')
+            ->assertViewIs('random-jokes::joke')
+            ->assertViewHas('joke', 'some joke')
             ->assertStatus(200);
     }
 

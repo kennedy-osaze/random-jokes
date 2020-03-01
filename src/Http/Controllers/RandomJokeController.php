@@ -8,6 +8,8 @@ class RandomJokeController
 {
     public function __invoke()
     {
-        return RandomJokes::getRandomJoke();
+        return view('random-jokes::joke', [
+            'joke' => RandomJokes::getRandomJoke(),
+        ]);
     }
 }
