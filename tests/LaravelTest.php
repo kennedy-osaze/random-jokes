@@ -3,8 +3,8 @@
 namespace KennedyOsaze\RandomJokes\Tests;
 
 use Illuminate\Support\Facades\Artisan;
-use KennedyOsaze\RandomJokes\Models\Joke;
 use KennedyOsaze\RandomJokes\Facades\RandomJokes;
+use KennedyOsaze\RandomJokes\Models\Joke;
 use KennedyOsaze\RandomJokes\RandomJokesServiceProvider;
 use Orchestra\Testbench\TestCase;
 
@@ -62,7 +62,7 @@ class LaravelTest extends TestCase
 
     protected function getEnvironmentSetUp($app)
     {
-        require_once __DIR__ . '/../database/migrations/create_jokes_table.php.stub';
+        require_once __DIR__.'/../database/migrations/create_jokes_table.php.stub';
 
         (new \CreateJokesTable())->up();
     }
