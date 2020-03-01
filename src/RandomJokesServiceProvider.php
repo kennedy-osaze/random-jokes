@@ -2,9 +2,11 @@
 
 namespace KennedyOsaze\RandomJokes;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use KennedyOsaze\RandomJokes\JokeFactory;
 use KennedyOsaze\RandomJokes\Console\RandomJoke;
+use KennedyOsaze\RandomJokes\Http\Controllers\RandomJokeController;
 
 class RandomJokesServiceProvider extends ServiceProvider
 {
@@ -15,6 +17,8 @@ class RandomJokesServiceProvider extends ServiceProvider
                 RandomJoke::class,
             ]);
         }
+
+        Route::get('random-jokes', RandomJokeController::class);
     }
 
     public function register()
