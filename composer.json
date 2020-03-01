@@ -13,7 +13,8 @@
         "guzzlehttp/guzzle": "^6.5"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5"
+        "phpunit/phpunit": "^8.5",
+        "orchestra/testbench": "^4.6"
     },
     "autoload": {
         "psr-4": {
@@ -23,6 +24,16 @@
     "autoload-dev": {
         "psr-4": {
             "KennedyOsaze\\RandomJokes\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "KennedyOsaze\\RandomJokes\\RandomJokesServiceProvider"
+            ],
+            "aliases": {
+                "RandomJokes": "KennedyOsaze\\RandomJokes\\Facades\\RandomJokes"
+            }
         }
     }
 }
