@@ -2,27 +2,25 @@
 
 namespace KennedyOsaze\RandomJokes;
 
+use GuzzleHttp\Client;
+
 class JokeFactory
 {
-    protected $jokes = [];
+    public const API_ENDPOINT = 'http://jokes.guyliangilsing.me/retrieveJokes.php?type=random';
 
-    public function __construct(array $jokes = [])
+    protected $client;
+
+    public function __construct(Client $client = null)
     {
-        $this->jokes = $jokes ?: self::defaultJokes();
+        $this->client = $client ?: new Client();
     }
 
     public function getRandomJoke()
     {
-        return $this->jokes[array_rand($this->jokes)];
-    }
+        $response = $this->client->get(self::API_ENDPOINT);
 
-    public static function defaultJokes()
-    {
-        return [
-            'Nothing makes a woman more confused than a relationship with a broke man who is extremely good in bed.',
-            'Dating a slim or slender guy is cool. The problem is when you are lying on his chest then his ribs draws adidas lines on your face.',
-            'He who swallows a coconut, must have great faith in his anus.',
-            'No girl will choose six packs over six cars. Stop going to the gym and go to work.',
-        ];
+        $responseData = json_decode($response->getBody()->getContents());
+
+        return $responseData->joke;
     }
 }
